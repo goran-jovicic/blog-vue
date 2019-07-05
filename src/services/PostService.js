@@ -8,6 +8,10 @@ export default class PostService {
     getPosts() {
         return axios.get('posts')
     }
+
+    getSinglePost(id) {
+        return axios.get('posts/' + id)
+    }
 }
 
 export const postService = new PostService() 

@@ -2,7 +2,8 @@
   <div>
     <ul>
       <li v-for="(post, index) in posts" :key="index">
-        {{ `${post.id} ${post.title} ${post.text}` }}
+        {{ `${post.title} ${post.text}` }}
+        <router-link :to="postID(post)">View Post</router-link>
       </li>
     </ul>
   </div>
@@ -30,7 +31,14 @@ export default {
       }).catch(e => {
         console.log(e)
       })
+  },
+  methods: {
+    postID (post) {
+      return `/post/${post.id}`
+    }
   }
+
+
 };
 </script>
 
