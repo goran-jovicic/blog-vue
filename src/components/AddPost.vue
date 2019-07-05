@@ -55,7 +55,7 @@ export default {
         return
       }
       postService.addPost(this.newPost);
-      this.$router.push("/posts");
+      this.$router.push('/posts');
     },
 
     handleReset() {

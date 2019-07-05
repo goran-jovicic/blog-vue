@@ -10,7 +10,7 @@ export default class PostService {
     }
 
     getSinglePost(id) {
-        return axios.get(`posts/${id}`)
+        return axios.get(`/posts/${id}?filter={"include":["comments"]}`)
     }
 
     addPost(post) {
@@ -35,6 +35,10 @@ export default class PostService {
 
     deletePost(id){
         return axios.delete(`posts/${id}`)
+    }
+
+    addCommentOnPost(postId,comment) {
+        axios.post(`/posts/${postId}/comments`, comment)
     }
 }
 
