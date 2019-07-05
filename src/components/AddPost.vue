@@ -11,6 +11,7 @@
       </div>
       <button class="btn btn-primary">Submit</button>
     </form>
+    <button class="btn btn-primary" @click="handleReset">Reset</button>
   </div>
 </template>
 
@@ -31,6 +32,13 @@ export default {
     handleAdd() {
       postService.addPost(this.newPost)
       this.$router.push('/posts')
+    },
+
+    handleReset() {
+      this.newPost = {
+        title: "",
+        text: ""
+      }
     }
   }
 };
