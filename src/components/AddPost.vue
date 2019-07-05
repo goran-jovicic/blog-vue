@@ -69,8 +69,7 @@ export default {
   created() {
     this.id = this.$router.currentRoute.params.id;
     if (this.id) {
-      postService
-        .getSinglePost(this.id)
+      postService.getSinglePost(this.id)
         .then(response => {
           this.newPost = response.data;
         })
