@@ -4,6 +4,7 @@
       <li v-for="(post, index) in posts" :key="index">
         {{ `${post.title}` }}
         <router-link :to="postID(post)">View Post</router-link>
+        <router-link :to="editPost(post)">Edit Post</router-link>
       </li>
     </ul>
   </div>
@@ -24,6 +25,16 @@ export default {
     };
   },
 
+  methods: {
+    postID(post) {
+      return `/post/${post.id}`;
+    },
+
+    editPost(post) {
+      return `/edit/${post.id}`;
+    }
+  },
+
   created() {
     postService
       .getPosts()
@@ -33,11 +44,6 @@ export default {
       .catch(e => {
         console.log(e);
       });
-  },
-  methods: {
-    postID(post) {
-      return `/post/${post.id}`;
-    }
   }
 };
 </script>
