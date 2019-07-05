@@ -7,7 +7,6 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import AppPosts from "./components/AppPosts";
 
 export default {};
 </script>
