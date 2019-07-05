@@ -15,29 +15,29 @@ export default class PostService {
 
     addPost(post) {
         axios.post(`posts`, post)
-        .then(response=>{
-            console.log(response)
-        })
-        .catch(e => {
-            console.log(e)
-        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(e => {
+                console.log(e)
+            })
     }
 
     editPost(newPost) {
         axios.put(`posts/${newPost.id}`, newPost)
-        .then(response => {
-            console.log(response)
-        })  
-        .catch(e => {
-            console.log(e)
-        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(e => {
+                console.log(e)
+            })
     }
 
-    deletePost(id){
+    deletePost(id) {
         return axios.delete(`posts/${id}`)
     }
 
-    addCommentOnPost(postId,comment) {
+    addCommentOnPost(postId, comment) {
         axios.post(`/posts/${postId}/comments`, comment)
     }
 }

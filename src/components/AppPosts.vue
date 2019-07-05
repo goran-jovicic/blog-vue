@@ -6,6 +6,7 @@
         <router-link :to="postID(post)">View Post</router-link>
         <router-link :to="editPost(post)">Edit Post</router-link>
         <button @click="handleDelete(post.id)">Delete Post</button>
+        <p>{{`Post created : ${diffForHumans(post.createdAt)} `}}</p>
       </li>
     </ul>
   </div>
@@ -13,8 +14,11 @@
 
 <script>
 import { postService } from "../services/PostService";
+import { DateMixin } from "@/mixins/mixin.js";
 
 export default {
+  mixins : [DateMixin],
+
   data() {
     return {
       post: {
@@ -28,18 +32,17 @@ export default {
 
   methods: {
     postID(post) {
-      return `/post/${post.id}`
+      return `/post/${post.id}`;
     },
 
     editPost(post) {
-      return `/edit/${post.id}`
+      return `/edit/${post.id}`;
     },
 
-    handleDelete(id){
-      postService.deletePost(id)
-      .then(response => {
-        this.posts = this.posts.filter(post => post.id !== id)
-      })
+    handleDelete(id) {
+      postService.deletePost(id).then(response => {
+        this.posts = this.posts.filter(post => post.id !== id);
+      });
     }
   },
 

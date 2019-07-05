@@ -51,11 +51,11 @@ export default {
     handleForm() {
       if (this.id) {
         postService.editPost(this.newPost);
-        this.$router.push('/posts')
-        return
+        this.$router.push("/posts");
+        return;
       }
       postService.addPost(this.newPost);
-      this.$router.push('/posts');
+      this.$router.push("/posts");
     },
 
     handleReset() {
@@ -69,7 +69,8 @@ export default {
   created() {
     this.id = this.$router.currentRoute.params.id;
     if (this.id) {
-      postService.getSinglePost(this.id)
+      postService
+        .getSinglePost(this.id)
         .then(response => {
           this.newPost = response.data;
         })

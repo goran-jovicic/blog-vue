@@ -1,30 +1,30 @@
 <template>
   <div>
-      <label>Input comment</label>
-      <input
-        type="text"
-        id="text"
-        name="text"
-        placeholder="Your comment here"
-        v-model="comment.text"
-        required
-      />
-      <button @click="newComment">Submit comment </button>
+    <label>Input comment</label>
+    <input
+      type="text"
+      id="text"
+      name="text"
+      placeholder="Your comment here"
+      v-model="comment.text"
+      required
+    />
+    <button @click="newComment">Submit comment</button>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      comment : {
-        text : ''
+      comment: {
+        text: ""
       }
-    }
+    };
   },
   methods: {
-    newComment () {
-      this.$emit('addComment', this.comment)
+    newComment() {
+      this.$emit("addComment", this.comment);
     }
   }
 };

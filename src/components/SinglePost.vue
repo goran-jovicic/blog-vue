@@ -1,11 +1,18 @@
 <template>
   <div>
-    <p>{{ `${post.title} `}}</p>
-    <p>{{ `${post.text}` }}</p>
+    <p>Title of post : {{ `${post.title} `}}</p>
+    <p>Text of post : {{ `${post.text}` }}</p>
+    <p>Created at : {{ formatDate(post.createdAt,'YYYY-MM-DD HH:mm:ss') }}</p>
     <div>
-    <AddComment @addComment="handleComment" />
+      <AddComment @addComment="handleComment" />
       <div>
-        <p v-for="(comment, index) in post.comments" :key="index"> {{ `${comment.text}` }} </p>
+        <p
+          v-for="(comment, index) in post.comments"
+          :key="index"
+        >Comments on post : {{ `${comment.text}` }}
+        Created at : {{ formatDate(comment.createdAt,'YYYY-MM-DD HH:mm:ss') }}
+        </p>
+        
       </div>
     </div>
   </div>
@@ -14,11 +21,14 @@
 <script>
 import { postService } from "../services/PostService";
 import AddComment from "@/components/AddComment";
+import { DateMixin } from "@/mixins/mixin.js";
 
 export default {
   components: {
-     AddComment 
+    AddComment
   },
+
+  mixins : [DateMixin],
 
   data() {
     return {
@@ -27,7 +37,7 @@ export default {
         title: "",
         text: "",
         comments: []
-      },
+      }
     };
   },
 
@@ -50,10 +60,10 @@ export default {
         });
     },
 
-    handleComment (comment) {
-      postService.addCommentOnPost(this.id,comment)
-      this.post.comments.push(comment)
-      console.log(comment)
+    handleComment(comment) {
+      postService.addCommentOnPost(this.id, comment);
+      this.post.comments.push(comment);
+      console.log(comment);
     }
   }
 };
