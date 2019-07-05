@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="(post, index) in posts" :key="index">
-        {{ `${post.title} ${post.text}` }}
+        {{ `${post.title}` }}
         <router-link :to="postID(post)">View Post</router-link>
       </li>
     </ul>
@@ -10,40 +10,40 @@
 </template>
 
 <script>
-import { postService } from '../services/PostService'
+import { postService } from "../services/PostService";
 
 export default {
-  data () {
+  data() {
     return {
       post: {
-        id : '',
-        title : '',
-        text : ''
+        id: "",
+        title: "",
+        text: ""
       },
-      posts : [],
-    }
+      posts: []
+    };
   },
 
-  created () {
-    postService.getPosts()
+  created() {
+    postService
+      .getPosts()
       .then(response => {
-        this.posts = response.data
-      }).catch(e => {
-        console.log(e)
+        this.posts = response.data;
       })
+      .catch(e => {
+        console.log(e);
+      });
   },
   methods: {
-    postID (post) {
-      return `/post/${post.id}`
+    postID(post) {
+      return `/post/${post.id}`;
     }
   }
-
-
 };
 </script>
 
 <style>
 li {
-  list-style: none
+  list-style: none;
 }
 </style>

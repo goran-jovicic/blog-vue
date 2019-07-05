@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>{{ `${post.title} `}} </p>
-    <p>{{ `${post.text}` }}</p>      
-    </div>
+    <p>{{ `${post.title} `}}</p>
+    <p>{{ `${post.text}` }}</p>
+  </div>
 </template>
 
 <script>
@@ -28,9 +28,10 @@ export default {
 
   methods: {
     getPost(id) {
-        postService.getSinglePost(id)
+      postService
+        .getSinglePost(id)
         .then(response => {
-          this.post = response.data
+          this.post = response.data;
         })
         .catch(e => {
           console.log(e);

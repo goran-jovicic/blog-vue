@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <nav>
+      <router-link to="/posts">Posts list </router-link>
+      <router-link to="/add"> Add post</router-link>
+    </nav>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {};
 </script>
 
@@ -19,5 +20,9 @@ export default {};
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+nav {
+  font-size: 2rem;
 }
 </style>
